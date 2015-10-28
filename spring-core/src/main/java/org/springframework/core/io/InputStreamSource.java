@@ -26,7 +26,7 @@ import java.io.InputStream;
  *
  * <p>For single-use streams, {@link InputStreamResource} can be used for any
  * given {@code InputStream}. Spring's {@link ByteArrayResource} or any
- * file-based {@code Resource} implementation can be used as a concrete
+ * file-based {@code Resource} implementation can be used as a concrete£¨»ìºÏ£©
  * instance, allowing one to read the underlying content stream multiple times.
  * This makes this interface useful as an abstract content source for mail
  * attachments, for example.
