@@ -43,11 +43,19 @@ import org.springframework.util.StringUtils;
  * @see Class#getResourceAsStream(String)
  */
 public class ClassPathResource extends AbstractFileResolvingResource {
-
+	/**
+	 * 资源路径可以是文件路径/URL/class path
+	 */
 	private final String path;
 
+	/**
+	 * 类加载器
+	 */
 	private ClassLoader classLoader;
 
+	/**
+	 * 使用自定义类，用于加载资源
+	 */
 	private Class<?> clazz;
 
 
@@ -57,9 +65,13 @@ public class ClassPathResource extends AbstractFileResolvingResource {
 	 * methods will not accept it.
 	 * <p>The thread context class loader will be used for
 	 * loading the resource.
+	 * 线程上下文类加载器将用于加载资源
 	 * @param path the absolute path within the class path
+	 * path：classpath下的绝对路径
 	 * @see java.lang.ClassLoader#getResourceAsStream(String)
+	 * 查看jdk自带类，位于rt.jar包中
 	 * @see org.springframework.util.ClassUtils#getDefaultClassLoader()
+	 * spring封装类
 	 */
 	public ClassPathResource(String path) {
 		this(path, (ClassLoader) null);
@@ -75,12 +87,20 @@ public class ClassPathResource extends AbstractFileResolvingResource {
 	 * @see ClassLoader#getResourceAsStream(String)
 	 */
 	public ClassPathResource(String path, ClassLoader classLoader) {
+		/**
+		 * 资源路径为空则抛出异常
+		 */
 		Assert.notNull(path, "Path must not be null");
 		String pathToUse = StringUtils.cleanPath(path);
 		if (pathToUse.startsWith("/")) {
 			pathToUse = pathToUse.substring(1);
 		}
 		this.path = pathToUse;
+		/**
+		 * 获取类加载器
+		 * 如果有自定义类加载器则返回自定义类加载器，
+		 * 否则使用spring默认加载器
+		 */
 		this.classLoader = (classLoader != null ? classLoader : ClassUtils.getDefaultClassLoader());
 	}
 
