@@ -28,10 +28,12 @@ import org.springframework.util.StringUtils;
 
 /**
  * {@link Resource} implementation for class path resources.
+ * 资源类路径的实现
  * Uses either a given ClassLoader or a given Class for loading resources.
- *
+ *使用给定的类加载器或给定的类加载资源
  * <p>Supports resolution as {@code java.io.File} if the class path
  * resource resides in the file system, but not for resources in a JAR.
+ * 支持资源文件在classpath的系统文件中，且不在jar包中
  * Always supports resolution as URL.
  *
  * @author Juergen Hoeller
