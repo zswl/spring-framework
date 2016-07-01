@@ -48,7 +48,9 @@ public interface Resource extends InputStreamSource {
 
 	/**
 	 * Return whether this resource actually exists in physical form.
+	 * 返回资源十分存在于物理介质
 	 * <p>This method performs a definitive existence check, whereas the
+	 * 这种方法执行一个明确的存在检查
 	 * existence of a {@code Resource} handle only guarantees a
 	 * valid descriptor handle.
 	 */
@@ -68,7 +70,7 @@ public interface Resource extends InputStreamSource {
 	/**
 	 * Return whether this resource represents a handle with an open
 	 * stream. If true, the InputStream cannot be read multiple times,
-	 * and must be read and closed to avoid resource leaks.
+	 * and must be read and closed to avoid resource leaks（泄露
 	 * <p>Will be {@code false} for typical resource descriptors.
 	 */
 	boolean isOpen();
@@ -103,6 +105,7 @@ public interface Resource extends InputStreamSource {
 
 	/**
 	 * Determine the last-modified timestamp for this resource.
+	 * 资源的最后修改时间
 	 * @throws IOException if the resource cannot be resolved
 	 * (in the file system or as some other known physical resource type)
 	 */
@@ -110,6 +113,7 @@ public interface Resource extends InputStreamSource {
 
 	/**
 	 * Create a resource relative to this resource.
+	 * 基于当前资源创建相对资源
 	 * @param relativePath the relative path (relative to this resource)
 	 * @return the resource handle for the relative resource
 	 * @throws IOException if the relative resource cannot be determined

@@ -91,6 +91,7 @@ public class ClassPathResource extends AbstractFileResolvingResource {
 		 * 资源路径为空则抛出异常
 		 */
 		Assert.notNull(path, "Path must not be null");
+		//将资源路径转换为可用的路径
 		String pathToUse = StringUtils.cleanPath(path);
 		if (pathToUse.startsWith("/")) {
 			pathToUse = pathToUse.substring(1);

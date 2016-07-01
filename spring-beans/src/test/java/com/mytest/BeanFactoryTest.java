@@ -3,6 +3,9 @@ package com.mytest;
 import com.mytest.bean.MyTestBean;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
@@ -37,4 +40,16 @@ public class BeanFactoryTest {
 		 */
 		assertEquals("testStr", bean.getTestStr());
 	}
+
+	@Test
+	public void testDefaultListableBeanFactory(){
+		ClassPathResource classPathResource = new ClassPathResource("bean/beanFactoryTest.xml");
+		DefaultListableBeanFactory defaultListableBeanFactory = new DefaultListableBeanFactory();
+		XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(defaultListableBeanFactory);
+		xmlBeanDefinitionReader.loadBeanDefinitions(classPathResource);
+		MyTestBean myTestBean = (MyTestBean)defaultListableBeanFactory.getBean("myTestBean");
+		System.out.println(myTestBean.getTestStr());
+	}
+
+
 }

@@ -28,6 +28,7 @@ import org.springframework.beans.factory.support.StaticListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.cglib.proxy.NoOp;
 import org.springframework.core.io.Resource;
+import org.springframework.tests.TestResourceUtils;
 import org.springframework.tests.sample.beans.ITestBean;
 import org.springframework.tests.sample.beans.IndexedTestBean;
 import org.springframework.tests.sample.beans.TestBean;
@@ -35,7 +36,6 @@ import org.springframework.tests.sample.beans.factory.DummyFactory;
 import org.springframework.util.ObjectUtils;
 
 import static org.junit.Assert.*;
-import static org.springframework.tests.TestResourceUtils.*;
 
 /**
  * @author Rod Johnson
@@ -46,10 +46,10 @@ import static org.springframework.tests.TestResourceUtils.*;
 public final class BeanFactoryUtilsTests {
 
 	private static final Class<?> CLASS = BeanFactoryUtilsTests.class;
-	private static final Resource ROOT_CONTEXT = qualifiedResource(CLASS, "root.xml");
-	private static final Resource MIDDLE_CONTEXT = qualifiedResource(CLASS, "middle.xml");
-	private static final Resource LEAF_CONTEXT = qualifiedResource(CLASS, "leaf.xml");
-	private static final Resource DEPENDENT_BEANS_CONTEXT = qualifiedResource(CLASS, "dependentBeans.xml");
+	private static final Resource ROOT_CONTEXT = TestResourceUtils.qualifiedResource(CLASS, "root.xml");
+	private static final Resource MIDDLE_CONTEXT = TestResourceUtils.qualifiedResource(CLASS, "middle.xml");
+	private static final Resource LEAF_CONTEXT = TestResourceUtils.qualifiedResource(CLASS, "leaf.xml");
+	private static final Resource DEPENDENT_BEANS_CONTEXT = TestResourceUtils.qualifiedResource(CLASS, "dependentBeans.xml");
 
 	private DefaultListableBeanFactory listableBeanFactory;
 

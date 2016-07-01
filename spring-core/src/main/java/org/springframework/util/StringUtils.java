@@ -87,8 +87,10 @@ public abstract class StringUtils {
 	/**
 	 * Check that the given {@code CharSequence} is neither {@code null} nor
 	 * of length 0.
+	 * 校验给定的字符串不为空且长度不为0
 	 * <p>Note: this method returns {@code true} for a {@code CharSequence}
 	 * that purely consists of whitespace.
+	 * 实例如下：
 	 * <p><pre class="code">
 	 * StringUtils.hasLength(null) = false
 	 * StringUtils.hasLength("") = false
@@ -105,8 +107,10 @@ public abstract class StringUtils {
 
 	/**
 	 * Check that the given {@code String} is neither {@code null} nor of length 0.
+	 * 校验给定的字符串不为空且长度不为0
 	 * <p>Note: this method returns {@code true} for a {@code String} that
 	 * purely consists of whitespace.
+	 * <p>注意：当字符串仅包含空格时本方法返回true
 	 * @param str the {@code String} to check (may be {@code null})
 	 * @return {@code true} if the {@code String} is not {@code null} and has length
 	 * @see #hasLength(CharSequence)
@@ -423,6 +427,7 @@ public abstract class StringUtils {
 
 	/**
 	 * Delete any character in a given {@code String}.
+	 * 删除给定字符串的任意字符
 	 * @param inString the original {@code String}
 	 * @param charsToDelete a set of characters to delete.
 	 * E.g. "az\n" will delete 'a's, 'z's and new lines.
@@ -608,6 +613,7 @@ public abstract class StringUtils {
 	/**
 	 * Normalize the path by suppressing sequences like "path/.." and
 	 * inner simple dots.
+	 * 将路径序列规范化，例如path/
 	 * <p>The result is convenient for path comparison. For other uses,
 	 * notice that Windows separators ("\") are replaced by simple slashes.
 	 * @param path the original path
@@ -617,9 +623,11 @@ public abstract class StringUtils {
 		if (path == null) {
 			return null;
 		}
+		//将Windows文件分隔符替换成通用文件分隔符
 		String pathToUse = replace(path, WINDOWS_FOLDER_SEPARATOR, FOLDER_SEPARATOR);
 
 		// Strip prefix from path to analyze, to not treat it as part of the
+		//待前缀的路径分析，不把它作为对路径元件部分
 		// first path element. This is necessary to correctly parse paths like
 		// "file:core/../core/io/Resource.class", where the ".." should just
 		// strip the first "core" directory while keeping the "file:" prefix.
@@ -1046,6 +1054,7 @@ public abstract class StringUtils {
 	/**
 	 * Take a {@code String} that is a delimited list and convert it into
 	 * a {@code String} array.
+	 * 将给定的字符串分割成list并且转换成字符串数组
 	 * <p>A single {@code delimiter} may consist of more than one character,
 	 * but it will still be considered as a single delimiter string, rather
 	 * than as bunch of potential delimiter characters, in contrast to
